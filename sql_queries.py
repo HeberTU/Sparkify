@@ -14,7 +14,7 @@ CREATE TABLE songplays (
     start_time timestamp,
     user_id varchar,
     level varchar,
-    song_id int,
+    song_id varchar,
     artist_id varchar,
     session_id int,
     location varchar,
@@ -34,7 +34,7 @@ CREATE TABLE users (
 
 song_table_create = ("""
 CREATE TABLE songs (
-    song_id int,
+    song_id varchar,
     title varchar,
     artist_id varchar,
     year int,
@@ -73,6 +73,13 @@ user_table_insert = ("""
 """)
 
 song_table_insert = ("""
+INSERT INTO songs (
+    song_id,
+    title,
+    artist_id,
+    year,
+    duration
+) VALUES (%s, %s, %s, %s, %s);
 """)
 
 artist_table_insert = ("""
