@@ -29,19 +29,20 @@ Mainly, this project will focus on:
 
 ### Dependencies Installation 
 
-1. Poetry is the tool used for dependency management. To install poetry, run from a terminal:
-    ```bash
-    pip install poetry
-    ```
-    Make sure that version 1.1.8 is installed (1.1.7 is buggy).
-2. Create and activate a virtual environment for the project. For example:
+1. Create and activate a virtual environment for the project. For example:
     ```bash
     python3 -m venv ./.venv
     ./.venv/Scripts/activate
     ```
+   
+2. Install Poetry, the tool used for dependency management. To install it, run from a terminal:
+    ```bash
+    pip install poetry
+    ```
+
 3. From the virtual environment, install the required dependencies with
     ```bash
-    poetry update
+    poetry install --no-root
     ```
 
 ### Scripts
