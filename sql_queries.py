@@ -102,7 +102,9 @@ INSERT INTO songs (
     artist_id,
     year,
     duration
-) VALUES (%s, %s, %s, %s, %s);
+) VALUES (%s, %s, %s, %s, %s)
+ON CONFLICT (song_id)
+DO NOTHING;
 """)
 
 artist_table_insert = ("""
@@ -127,7 +129,9 @@ INSERT INTO time(
     month,
     year,
     weekday
-) VALUES (%s, %s, %s, %s, %s, %s, %s);
+) VALUES (%s, %s, %s, %s, %s, %s, %s)
+ON CONFLICT (start_time)
+DO NOTHING;
 """)
 
 # FIND SONGS
