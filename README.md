@@ -27,22 +27,62 @@ Mainly, this project will focus on:
 
 ## How to Run Scripts 
 
+### Prerequisites
+
+1. PyEnv
+2. Poetry
+
+#### PyEnv installation in macOS
+
+In the terminal:
+
+1. Update Homebrew and install it:
+    ```zsh
+   brew update
+   brew install pyenv
+    ```
+
+2. Set up the shell environment for PyEnv for ZSH:
+    ```zsh
+   echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+   echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+   echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+    ```
+
+3. Install python 3.8.6 using PyEnv
+    ```zsh
+   pyenv install 3.8.6
+   pyenv global 3.8.6
+    ```
+
+#### Poetry installation
+
+1. Install poetry using the following command:
+    ```zsh
+   curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+    ```
+
+2. Add Poetry's bin directory to `PATH` environment variable.
+    ```zsh
+   source $HOME/.poetry/env
+    ```
+
+3. Set virtual env in project root. 
+    ```zsh
+   poetry config virtualenvs.in-project true
+    ```
+
+
 ### Dependencies Installation 
 
-1. Create and activate a virtual environment for the project. For example:
-    ```bash
-    python3 -m venv ./.venv
-    ./.venv/Scripts/activate
+1. Create python environment with all dependencies:
+    ```zsh
+    poetry install --no-root
     ```
    
-2. Install Poetry, the tool used for dependency management. To install it, run from a terminal:
-    ```bash
-    pip install poetry
-    ```
-
-3. From the virtual environment, install the required dependencies with
-    ```bash
-    poetry install --no-root
+2. Activate python environment:
+    ```zsh
+    source .venv/bin/activate
     ```
 
 ### Scripts
