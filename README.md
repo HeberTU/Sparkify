@@ -2,11 +2,12 @@ Sparkify
 ==============================
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-Code for project: Sparkify, Udacity
 
-- Origin: (https://github.com/HeberTU/Sparkify)
-- Author: Heber Trujillo <heber.trj.urt@gmail.com>
-- Date of last README.md update: 16.02.2022
+- [Origin](https://github.com/HeberTU/Sparkify)
+- Authors: 
+  - Heber Trujillo <heber.trj.urt@gmail.com>
+  - Montserrat Navarro <montserrat.nvro.lpz@gmail.com> 
+- Date of last README.md update: 18.06.2022
 
 ## Project Overview
 
@@ -131,3 +132,92 @@ We use the star schema optimized to analyze which songs users are listening to, 
   * time - timestamps of records in songplays broken down into specific units.
 
 ![img.png](imgs/Sparkify-db-model.PNG)
+
+## Contributing to Sparkify
+
+All contributions, bug reports, bug fixes, documentation improvements, 
+enhancements, and ideas are welcome.
+
+### New Features Guidelines
+
+All new features must reside in their own branch, which must be pushed to the 
+remote repository. However, instead of branching from the master branch, 
+feature branches use the develop branch as their parent branch. When a 
+feature is finished, it is merged back into develop branch. Functions should 
+never interact directly with the master branch.
+
+#### Instructions
+
+1. Check out to develop
+```bash
+git checkout develop
+```
+2. Pull latest changes from remote  
+```bash
+git pull
+```
+3. Double check that you have all the dependencies installed in your virtual env from the new  pyproject.toml
+```bash
+poetry install
+```
+4. Create your branch using the following notation feat/{your-name}, please note that  {your-name} must be concise, like:
+```bash
+git checkout -b feat/pre-commit
+```
+5. Push your newly created branch to remote repository
+```bash
+git push --set-upstream origin feat/{your-name}
+```
+6. Regular commit your changes using the following logic 
+   - Updating existing code:
+   ```bash
+    git commit -m "[UPD] your message here"
+    ```
+   - New modules, classes, functions, etc: 
+   ```bash
+    git commit -m "[NEW] your message here"
+    ```
+
+Once you have the feature ready and tested, open a Pull Request to merge your branch into develop.
+
+### Bug Fixing Guidelines
+
+Fix, or hotfix branches are used to quickly fix production releases. They are 
+very similar to feature branches, except that they use the master branch as 
+their parent branch and not the develop branch.  When the fix is done, it 
+should be merged with master and develop branches, and master should be tagged
+with an updated version number.
+
+#### Instructions
+
+1. Check out to develop
+```bash
+git checkout develop
+```
+2. Pull latest changes from remote  
+```bash
+git pull
+```
+3. Double check that you have all the dependencies installed in your virtual env from the new  pyproject.toml
+```bash
+poetry install
+```
+4. Create your branch using the following notation fix/{your-name}, please note that {your-name} must be concise, like:
+```bash
+git checkout -b fix/logging-bug
+```
+5. Push your newly created branch to remote repository
+```bash
+git push --set-upstream origin fix/{your-name}
+```
+6. Regular commit your changes using the following logic 
+   - Updating existing code:
+   ```bash
+    git commit -m "[UPD] your message here"
+    ```
+   - New modules, classes, functions, etc: 
+   ```bash
+    git commit -m "[NEW] your message here"
+    ```
+
+Once you have the feature ready and tested, open a Pull Request to merge your branch into develop.
