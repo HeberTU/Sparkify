@@ -28,7 +28,7 @@ def test_version_configurations_path():
     assert settings.CONFIG_PATH == settings.PROJECT_PATH / "config"
 
 
-def est_configurations_path_exists():
+def test_configurations_path_exists():
     """Test if configuration path exists."""
     assert os.path.exists(
         settings.PROJECT_PATH / "config"
