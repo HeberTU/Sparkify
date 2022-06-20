@@ -43,7 +43,7 @@ class Settings():
     #   1. use same annotation as for PROJECT_PATH variable
     #   2. use the / of Path class to extend the PROJECT_PATH
     #   to "/Users/montse/projects/Sparkify/config/"
-    CONFIG_PATH = PROJECT_PATH
+    CONFIG_PATH = None
 
     # TODO heber.trujilloglovoapp.com - 20/6/22: Check if the CONFIG_PATH
     #  directory exists and if note creat it hints:
@@ -59,5 +59,4 @@ class Settings():
 
 
 
-# TODO heber.trujilloglovoapp.com - 20/6/22: create an instance of Settings
-#  class and nameit settings (first letter lower)
+settings = Settings()
