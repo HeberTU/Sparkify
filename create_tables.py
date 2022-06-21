@@ -1,30 +1,39 @@
 # -- coding: utf-8 --
 """This script create the Sparkify database and all its tables. """
+from typing import Tuple
 import psycopg2
 from sql_queries import create_table_queries, drop_table_queries
 import argparse
+from psycopg2.extensions import cursor as Cursor
+from psycopg2.extensions import connection as Connection
 
 
-def create_database(user_name: str, password: str):
+def create_database(
+        user_name: str,
+        password: str
+) -> Tuple[Cursor, Connection]:
     """
     - Creates and connects to the sparkifydb
     - Returns the connection and cursor to sparkifydb
     """
     
     # connect to default database
-    conn = psycopg2.connect(
-        f"host=127.0.0.1 dbname=postgres user={user_name} password={password}"
-    )
-    conn.set_session(autocommit=True)
-    cur = conn.cursor()
-    
-    # create sparkify database with UTF8 encoding
-    cur.execute("DROP DATABASE IF EXISTS sparkifydb")
-    cur.execute("CREATE DATABASE sparkifydb WITH ENCODING 'utf8' "
-                "TEMPLATE template0")
+    try:
+        conn = psycopg2.connect(
+            f"host=127.0.0.1 dbname=postgres user={user_name} "
+            f"password={password}")
 
-    # close connection to default database
-    conn.close()
+        conn.set_session(autocommit=True)
+
+        with conn.cursor() as cur:
+            cur.execute("DROP DATABASE IF EXISTS sparkifydb")
+            cur.execute("CREATE DATABASE sparkifydb WITH ENCODING 'utf8' "
+                        "TEMPLATE template0"
+                        )
+    finally:
+        if conn:
+            conn.close()
+
 
     # connect to sparkify database
     conn = psycopg2.connect(
@@ -98,4 +107,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     main(args.user_name, args.password)
+
 
