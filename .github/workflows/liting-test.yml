@@ -9,6 +9,8 @@ on:
 
 env:
   ENV: DEV
+  DB_USER_NAME: ${{secrets.DB_USER_NAME}}
+  DB_PASS: ${{secrets.DB_PASS}}
 
 jobs:
   test:
