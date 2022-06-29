@@ -32,7 +32,15 @@ Licence,
 
 
 # ---- EXAMPLE ----
-# @dataclass(frozen=True) <--- Investigate why I'm using frozen=True
+# @dataclass(frozen=True) <--- /!\ IMPORTANT /!\ Investigate why frozen=True.
 # class Carta:  <------------- The class name most be Carta, no carta nor CARTA
 #   palo: str   <------------- palo attribute represents: "corazones", etc
-#   numero: int <------------- numero attribute represent: A, 2, ..., Q, K
+#   numero: int <------------- numero attribute represent: 1, 2, ...
+
+
+# I have prepared a mini-template for you to have a docstring
+# reference: """Sparkify user representation"""
+class User:
+    """Sparkify user representation."""
+
+    pass
