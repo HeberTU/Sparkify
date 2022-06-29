@@ -10,4 +10,4 @@ from sparkifydb import __version__
 
 def test_version():
     """Test package version for new release."""
-    assert __version__ == '0.1.0'
+    assert __version__ == "0.2.0"
