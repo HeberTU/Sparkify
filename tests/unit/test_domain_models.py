@@ -31,7 +31,7 @@ def test_all_domain_classes_are_implemented(
 
 
 @pytest.mark.unit
-def test_only_domain_classes_are_implemented(
+def test_no_extra_domain_classes_are_implemented(
     get_implemented_domain_objects: FixtureFunction,
     get_domain_objects: FixtureFunction,
 ) -> None:
