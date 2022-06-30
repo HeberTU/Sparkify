@@ -7,40 +7,41 @@ Created on: 29/6/22
     - Montse Navarro <montserrat.nvro.lpz@gmail.com>
 Licence,
 """
-# TODO heber.trujilloglovoapp.com - 29/6/22: Import dataclass function from
-#  dataclasses module.
+from dataclasses import dataclass, field
+from typing import Optional
 
-# TODO heber.trujilloglovoapp.com - 29/6/22: Implement the following classes as
-#  dataclasses, note that they will be used to represent the SQL tables:
-#  1. User
-#  2. Artist
-#  3. Song
-#  4. Time
-#  hints:
-#  a) Dataclass attrbutes represent columns
-#  b) Table definitions can be found in "~/Aparkify/sql_queries.py", for
-#   example, user table is defined in line 26.
-#   c) some SQL-Python types equivalences:
-#       - varchar -> str
-#       - timestamp -> date from datetime module
-#   c) If the SQL column is NOT declared as Nullable, you can use the Optional
-#    python annotation
-#   d) The following columns DON'T have to be an attribute on any dataclass:
-#       - user_id
-#       - song_id
-#       - artist_id
-
-
-# ---- EXAMPLE ----
-# @dataclass(frozen=True) <--- /!\ IMPORTANT /!\ Investigate why frozen=True.
-# class Carta:  <------------- The class name most be Carta, no carta nor CARTA
-#   palo: str   <------------- palo attribute represents: "corazones", etc
-#   numero: int <------------- numero attribute represent: 1, 2, ...
-
-
-# I have prepared a mini-template for you to have a docstring
-# reference: """Sparkify user representation"""
+@dataclass(order=True, frozen=True)
 class User:
     """Sparkify user representation."""
+    first_name: Optional[str] = None
+    last_name: Optional[str] = None
+    gender: Optional[str] = None
+    level: Optional[str] = None
 
-    pass
+@dataclass(order=True, frozen=True)
+class Artist:
+    """Sparkify artist representation."""
+    name: Optional[str] = None
+    location: Optional[str] = None
+    latitude: Optional[float] = None
+    longitud: Optional[float] = None
+
+@dataclass(order=True, frozen=True)
+class Song:
+    """Sparkify song representation."""
+    title: Optional[str] = None
+    year: Optional[int] = None
+    duration: Optional[float] = None
+
+@dataclass(order=True, frozen=True)
+class Time:
+    """Sparkify time representation."""
+    # start_time: datetime = field(default_factory=datetime.utcnow)
+    start_time: str
+    hour: Optional[int] = None
+    day: Optional[int] = None
+    week: Optional[int] = None
+    month: Optional[int] = None
+    year: Optional[int] = None
+    weekday: Optional[int] = None
+
