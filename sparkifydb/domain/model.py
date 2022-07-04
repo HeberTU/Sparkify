@@ -10,7 +10,7 @@ Licence,
 from dataclasses import dataclass, field
 from typing import Optional
 
-@dataclass(order=True, frozen=True)
+@dataclass(order=True, unsafe_hash=True)
 class User:
     """Sparkify user representation."""
     first_name: Optional[str] = None
@@ -18,7 +18,7 @@ class User:
     gender: Optional[str] = None
     level: Optional[str] = None
 
-@dataclass(order=True, frozen=True)
+@dataclass(order=True, unsafe_hash=True)
 class Artist:
     """Sparkify artist representation."""
     name: Optional[str] = None
@@ -26,14 +26,14 @@ class Artist:
     latitude: Optional[float] = None
     longitud: Optional[float] = None
 
-@dataclass(order=True, frozen=True)
+@dataclass(order=True, unsafe_hash=True)
 class Song:
     """Sparkify song representation."""
     title: Optional[str] = None
     year: Optional[int] = None
     duration: Optional[float] = None
 
-@dataclass(order=True, frozen=True)
+@dataclass(order=True, unsafe_hash=True)
 class Time:
     """Sparkify time representation."""
     # start_time: datetime = field(default_factory=datetime.utcnow)
