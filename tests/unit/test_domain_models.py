@@ -31,30 +31,19 @@ def test_all_domain_classes_are_implemented(
 
 
 @pytest.mark.unit
-def test_no_extra_domain_classes_are_implemented(
-    get_implemented_domain_objects: FixtureFunction,
-    get_domain_objects: FixtureFunction,
-) -> None:
-    """Test only the needed classes are implemented."""
-    domain_objects = get_domain_objects
-    implemented_domain_dict_objects = get_implemented_domain_objects
-
-    implemented_object_names = set(implemented_domain_dict_objects.keys())
-
-    extra_implementations = implemented_object_names - domain_objects
-
-    msg = "The following classes should NOT be implemented in model "
-    msg += f"module: {extra_implementations}"
-
-    assert len(extra_implementations) == 0, msg
-
-
-@pytest.mark.unit
 def test_all_domain_classes_are_dataclasses(
     get_implemented_domain_objects: FixtureFunction,
+    table_definitions: FixtureFunction,
 ) -> None:
     """Test if all the needed classes are implemented as dataclasses."""
     implemented_domain_dict_objects = get_implemented_domain_objects
+    table_definitions_dict = table_definitions
+
+    implemented_domain_dict_objects = {
+        k: v
+        for k, v in implemented_domain_dict_objects.items()
+        if k in table_definitions_dict.keys()
+    }
 
     for name, obj in implemented_domain_dict_objects.items():
         msg = f"Object {name} has to be implemented as a dataclass."
